@@ -2,6 +2,8 @@ import { useFoodCourts } from '../hooks/useFoodCourts'
 import FoodCourtCard from '../components/FoodCourtCard'
 import { FOOD_COURT as PLAZA_VERDE } from '../demo/plaza-verde/data'
 
+const IS_DEMO = import.meta.env.VITE_APP_DEMO === 'true'
+
 export default function FoodCourtsPage() {
   const { data, loading, error, refetch } = useFoodCourts()
 
@@ -18,7 +20,7 @@ export default function FoodCourtsPage() {
       <h1 className="mb-2 text-2xl font-bold text-gray-900">Patios de comida</h1>
       <p className="mb-6 text-sm text-gray-500">Elige un patio para ver sus restaurantes</p>
 
-      {error ? (
+      {!IS_DEMO && (error ? (
         <div className="flex flex-col items-center gap-3 py-10 text-center">
           <p className="text-sm text-gray-400">{error}</p>
           <button
@@ -36,7 +38,7 @@ export default function FoodCourtsPage() {
             <FoodCourtCard key={fc.id} foodCourt={fc} />
           ))}
         </div>
-      )}
+      ))}
 
       {/* ── Demos ── */}
       <div className="mt-12">
