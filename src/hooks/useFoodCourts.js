@@ -11,7 +11,7 @@ export function useFoodCourts() {
     setError(null)
     try {
       const res = await foodCourtsService.getAll()
-      setData(res.data)
+      setData(Array.isArray(res.data) ? res.data : [])
     } catch (err) {
       setError(err?.response?.data?.message || err.message || 'Error al cargar patios de comida')
     } finally {

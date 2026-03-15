@@ -2,12 +2,12 @@ import { useNavigate } from 'react-router-dom'
 
 const FALLBACK_IMG = 'https://placehold.co/600x300?text=Patio+de+Comida'
 
-export default function FoodCourtCard({ foodCourt }) {
+export default function FoodCourtCard({ foodCourt, to }) {
   const navigate = useNavigate()
 
   return (
     <button
-      onClick={() => navigate(`/menus/${foodCourt.slug}`)}
+      onClick={() => navigate(to ?? `/menus/${foodCourt.slug}`)}
       className="group overflow-hidden rounded-2xl bg-white shadow hover:shadow-md transition-shadow text-left w-full"
     >
       <div className="aspect-video w-full overflow-hidden bg-gray-100">

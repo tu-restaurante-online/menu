@@ -1,5 +1,6 @@
 import { useFoodCourts } from '../hooks/useFoodCourts'
 import FoodCourtCard from '../components/FoodCourtCard'
+import { FOOD_COURT as PLAZA_VERDE } from '../demo/plaza-verde/data'
 
 export default function FoodCourtsPage() {
   const { data, loading, error, refetch } = useFoodCourts()
@@ -40,6 +41,15 @@ export default function FoodCourtsPage() {
           ))}
         </div>
       )}
+
+      {/* ── Demos ── */}
+      <div className="mt-12">
+        <h2 className="mb-1 text-lg font-semibold text-gray-700">Demos</h2>
+        <p className="mb-4 text-sm text-gray-400">Patios de comida de ejemplo para explorar la app</p>
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <FoodCourtCard foodCourt={PLAZA_VERDE} to="/demo/plaza-verde" />
+        </div>
+      </div>
     </div>
   )
 }
